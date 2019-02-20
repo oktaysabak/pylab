@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="html2canvas.js"></script>
+    <title>Test for html2canvas</title>
+</head>
+<body>
+    <div id="tobase64" style="text-align:left">
+            <p>قالت مصادر أمنية في مصر إن السلطات نفّذت حكم الإعدام بتسعة أشخاص أدينوا بالضلوع في اغتيال النائب العام المصري في عام 2015. </p>
+    </div>
+    <script>
+        //htm2lcanvas for cenvert div to base64
+        html2canvas(document.querySelector("#tobase64")).then(canvas => {
+            var img = canvas.toDataURL();
+            console.log(img);
+        }); 
+    </script>
+    
+</body>
+</html>
