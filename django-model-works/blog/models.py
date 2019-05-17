@@ -12,6 +12,24 @@ PUBLISH_CHOICES = (
     ('private', 'Private')
 )
 
+class PostModelQuerySet(models.query.QuerySet):
+    
+    def active(self):
+        return self.filter(active=True)
+    def is_post(self):
+        return self.filter(title__icontains='post')
+
+
+class PostModelManager(models.Manager):
+    def get_queryset(self):
+        return PostModelQuerySet(self.model, using=self._db)
+        
+    # def all(self, *args, **kwargs):
+    #     qs = super(PostModelManager, self).all(*args, **kwargs).active()
+    #     print(qs)
+    #     qs = self.get_queryset().active()
+    #     return qs
+
 class PostModel(models.Model):
     id              = models.BigAutoField(primary_key=True)
     active          = models.BooleanField(default=True)
@@ -33,6 +51,10 @@ class PostModel(models.Model):
     author_email    = models.EmailField(max_length=240, validators=[validate_author_email], null=True, blank=True)
     updated         = models.DateTimeField(auto_now=True)
     timestamp       = models.DateTimeField(auto_now=True)
+
+    objects = PostModelManager()
+    other = PostModelManager()
+    #save = PostModelManager()
 
     def save(self, *args, **kwargs): # models.Model icinde yer alan save methodunu override ediyoruz. isine yarayacak
         # if not self.slug and self.title:
