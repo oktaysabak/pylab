@@ -2,3 +2,5 @@
 *.pyc
 imageToSave*.png
 .env/*
+venv/*
+env/*
