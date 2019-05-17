@@ -48,7 +48,8 @@ class PostModel(models.Model):
 
     def __str__(self):
         return self.title
-
+    
+    @property
     def age(self):
         if self.publish == 'publish':
             now = datetime.now()

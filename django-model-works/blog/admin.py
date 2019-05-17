@@ -20,7 +20,7 @@ class PostModelAdmin(admin.ModelAdmin):
     def new_content(self, obj, *args, **kwargs):
         return str(obj.title)
     def get_age(self, obj, *args, **kwargs):
-        return str(obj.age())
+        return str(obj.age)
 
     class Meta:
         model = PostModel
