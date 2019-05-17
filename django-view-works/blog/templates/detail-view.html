@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POST LisDetailt</title>
+</head>
+<body>
+ <h1> {{ post.title }}</h1>   
+<p>{{ post.content }}</p>
+<a href="{% url 'blog:delete' id=post.id %}">Delete</a> - <a href="{% url 'blog:update' id=post.id %}">Update</a>
+</body>
+</html>

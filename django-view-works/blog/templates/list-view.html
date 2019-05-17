@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POST List</title>
+</head>
+<body>
+    <form action="/blog/" method="get">
+        <input type="text" name="q" id="search" placeholder="Search">
+    </form>
+    
+ <p> hello world </p>   
+ {% for post in posts %}
+
+ <li>{{ post.title }} | <a href ="/blog/{{ post.id }}"> Link</a></li>
+ <!-- <li>{{ post.title }} | <a href ="{% url 'blog:detail' id=post.id %}"> Link</a></li>
+ <li>{{ post.title }} | <a href ="{{ post.get_absolute_url }}"> Link</a></li> -->
+ {% endfor %}
+
+ <hr>
+ <a href="{% url 'blog:create' %}">Create</a>
+</body>
+</html>

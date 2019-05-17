@@ -1,6 +1,6 @@
 .vscode/
 *.pyc
 imageToSave*.png
-.env/*
-venv/*
-env/*
+*/.env/*
+*/venv/*
+*/env/*
