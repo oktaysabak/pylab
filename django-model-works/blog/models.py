@@ -3,7 +3,8 @@ from django.utils.text import slugify
 from .validators import validate_author_email
 from django.db.models.signals import pre_save, post_save 
 from django.utils import timezone
-
+from django.utils.timesince import timesince
+from datetime import timedelta, datetime, date
 
 PUBLISH_CHOICES = (
     ('draft', 'Draft'),
@@ -47,6 +48,22 @@ class PostModel(models.Model):
 
     def __str__(self):
         return self.title
+
+    def age(self):
+        if self.publish == 'publish':
+            now = datetime.now()
+            publish_time = datetime.combine (
+                self.publish_date,
+                datetime.now().min.time()
+            )
+            try:
+                difference = now - publish_time
+            except:
+                return "Unknown"
+            if difference <= timedelta(minutes=1):
+                return 'just now'
+            return f"{timesince(publish_time).split(', ')[0]} ago"
+        return "Not Published"
 
 # save fonksiyonunu override etmek yerine signals kullanmak daha saglikliymis
 def blog_post_model_pre_save_receiver(sender, instance, *args, **kwargs):
