@@ -29,7 +29,13 @@ class PostModelManager(models.Manager):
     #     print(qs)
     #     qs = self.get_queryset().active()
     #     return qs
+    def get_timeframe(self, date1, date2):
+        qs = self.get_queryset()
+        qs_time_1 = qs.filter(publish_date__gte=date1)
+        qs_time_2 = qs_time_1.filter(publish_date__lt=date2) # Q lookups
+        #final_qs = (qs_time_1 | qs_time_2 ).distinct()
 
+        return final_qs
 class PostModel(models.Model):
     id              = models.BigAutoField(primary_key=True)
     active          = models.BooleanField(default=True)
