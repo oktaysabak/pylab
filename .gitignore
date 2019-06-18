@@ -6,3 +6,4 @@ imageToSave*.png
 */env/*
 venv/*
 */db.sqlite3/*
+.env/*
