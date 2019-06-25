@@ -3,9 +3,13 @@ from django.shortcuts import render
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView, TemplateResponseMixin, ContextMixin
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from django.http import HttpResponse
 from django.utils.decorators import method_decorator
+
+class BookDetail(DetailView):
+    model = Book
+
 
 class DashboardTemplateView(TemplateView):
     template_name = "index.html"
