@@ -7,9 +7,6 @@ from django.views.generic import View, DetailView
 from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 
-class BookDetail(DetailView):
-    model = Book
-
 
 class DashboardTemplateView(TemplateView):
     template_name = "index.html"
