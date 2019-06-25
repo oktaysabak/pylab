@@ -8,6 +8,7 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 
+USERNAME_REGEX = '^[a-zA-Z0-9.@+-]*'
 
 class MyUserManager(BaseUserManager):
     def create_user(self, username,  email, password=None):
@@ -43,7 +44,7 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-USERNAME_REGEX = '^[a-zA-Z0-9.@+-]*'
+
 
 
 class MyUser(AbstractBaseUser):
