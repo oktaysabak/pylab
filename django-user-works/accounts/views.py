@@ -2,6 +2,8 @@ from django.contrib.auth import login, get_user_model, logout
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext as _
+from django.utils import translation
 # Create your views here.
 from .forms import UserCreationForm, UserLoginForm
 User = get_user_model()
@@ -9,7 +11,7 @@ User = get_user_model()
 def home(request):
     if request.user.is_authenticated():
         print(request.user.profile.city)
-    return render(request, "home.html", {})
+    return render(request, "home.html", {'deneme':_("hello")})
 
 def register(request, *args, **kwargs):
     form = UserCreationForm(request.POST or None)
