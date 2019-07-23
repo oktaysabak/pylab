@@ -9,9 +9,11 @@ from .forms import UserCreationForm, UserLoginForm
 User = get_user_model()
 @login_required(login_url='/login/')
 def home(request):
-    if request.user.is_authenticated():
-        print(request.user.profile.city)
-    return render(request, "home.html", {'deneme':_("hello")})
+    if request:
+        print(request.user.username)
+        return render(request, "home.html", {'deneme':_("hello")})
+    else:
+        HttpResponseRedirect('login/')
 
 def register(request, *args, **kwargs):
     form = UserCreationForm(request.POST or None)

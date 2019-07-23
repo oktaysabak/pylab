@@ -97,7 +97,7 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     city = models.CharField(max_length=120, null=True, blank=True)
 
     def __str__(self):
