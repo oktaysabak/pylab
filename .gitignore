@@ -7,3 +7,4 @@ imageToSave*.png
 venv/*
 db.sqlite3
 .env/*
+__pycahce__/*
