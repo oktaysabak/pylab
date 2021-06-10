@@ -4,7 +4,7 @@ attrs==19.2.0
 black==19.3b
 Click==7.0
 cycler==0.10.0
-Django==1.11.28
+Django==2.2.24
 escpos==1.6
 isort==4.3.20
 kiwisolver==1.0.1
